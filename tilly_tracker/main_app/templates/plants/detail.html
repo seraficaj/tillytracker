@@ -58,7 +58,7 @@
          <h2>Containers for {{plant.name}}</h2>
          {% if plant.vessels.count %}
          {% for vessel in plant.vessels.all %}
-         <div class="card col-sm-4">
+         <div class="card">
             <div class="card-body">
                <h4 class="card-title">{{vessel.color}}-{{vessel.name}}</h4>
             </div>
