@@ -13,6 +13,7 @@ urlpatterns = [
          views.PlantDelete.as_view(), name='plants_delete'),
     path('plants/<int:plant_id>/add_watering/',
          views.add_watering, name='add_watering'),
+     path('plants/<int:plant_id>/assoc_vessel/<int:vessel_id>/', views.assoc_vessel, name='assoc_vessel'),
     path('vessels/', views.VesselList.as_view(), name='vessels_index'),
     path('vessels/<int:pk>/', views.VesselDetail.as_view(), name='vessels_detail'),
     path('vessels/create/', views.VesselCreate.as_view(), name='vessels_create'),
