@@ -31,6 +31,11 @@ urlpatterns = [
         views.assoc_vessel,
         name="assoc_vessel",
     ),
+    path(
+        "plants/<int:plant_id>/unassoc_vessel/<int:vessel_id>/",
+        views.unassoc_vessel,
+        name="unassoc_vessel",
+    ),
     path("vessels/", views.VesselList.as_view(), name="vessels_index"),
     path("vessels/<int:pk>/", views.VesselDetail.as_view(), name="vessels_detail"),
     path("vessels/create/", views.VesselCreate.as_view(), name="vessels_create"),

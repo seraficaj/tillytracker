@@ -22,7 +22,7 @@ class PlantCreate(LoginRequiredMixin, CreateView):
 
 class PlantUpdate(LoginRequiredMixin, UpdateView):
     model = Plant
-    # Let's disallow the renaming of a cat by excluding the name field!
+    # Let's disallow the renaming of a plant by excluding the name field!
     fields = ["species", "description", "age"]
 
 
@@ -106,9 +106,17 @@ def reset_watering(request, plant_id):
 
 
 def assoc_vessel(request, plant_id, vessel_id):
-  # Note that you can pass a toy's id instead of the whole object
+  # Note that you can pass a vessel's id instead of the whole object
   Plant.objects.get(id=plant_id).vessels.add(vessel_id)
   return redirect('detail', plant_id=plant_id)
+
+
+def unassoc_vessel(request, plant_id, vessel_id):
+    vessel = Vessel.objects.get(id=vessel_id)
+    plant = Plant.objects.get(id=plant_id)
+    vessel.plant_set.remove(plant)
+    return redirect('detail', plant_id=plant_id)
+
 
 class VesselList(LoginRequiredMixin, ListView):
     model = Vessel
