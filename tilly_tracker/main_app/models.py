@@ -53,7 +53,7 @@ class Watering(models.Model):
       default=TYPES[2][0]
    )
    #Foreign key of Plant
-   plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+   plant = models.ForeignKey(Plant, on_delete=models.CASCADE, null=True)
 
    def __str__(self):
       return f"{self.get_type_display()} on {self.date}"

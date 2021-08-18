@@ -33,6 +33,9 @@
         {% csrf_token %} {{ watering_form.as_p }}
         <input type="submit" class="btn" value="Add Watering" />
       </form>
+      <div>
+        <a href="{% url 'reset_watering' plant.id %}" class="btn btn-warning">RESET WATERINGS</a>
+      </div>
       <br />
       {% if plant.watered_for_week == 0 %}
       <p>{{plant.name}} might need watering</p>
@@ -81,11 +84,16 @@
       <div class="card">
         <div class="card-content">
           <span class="card-title">
-            A <span style="color: {{ vessel.color }}">{{ vessel.color }}</span> {{vessel.name}}
+            A
+            <span style="color: {{ vessel.color }}">{{ vessel.color }}</span>
+            {{vessel.name}}
           </span>
         </div>
         <div class="card-action">
-          <form action="{% url 'assoc_vessel' plant.id vessel.id %}" method="post">
+          <form
+            action="{% url 'assoc_vessel' plant.id vessel.id %}"
+            method="post"
+          >
             {% csrf_token %}
             <button type="submit" class="btn">Add</button>
           </form>

@@ -89,6 +89,13 @@ def add_watering(request, plant_id):
         new_watering.save()
     return redirect("detail", plant_id=plant_id)
 
+@login_required
+def reset_watering(request, plant_id):
+    plant = Plant.objects.get(id=plant_id)
+    plant.watering_set.clear()
+    return redirect("detail", plant_id=plant_id)
+
+
 def assoc_vessel(request, plant_id, vessel_id):
   # Note that you can pass a toy's id instead of the whole object
   Plant.objects.get(id=plant_id).vessels.add(vessel_id)
