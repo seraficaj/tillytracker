@@ -22,6 +22,11 @@ urlpatterns = [
         name="reset_watering",
     ),
     path(
+        "plants/<int:plant_id>/delete_watering/<int:w_id>",
+        views.delete_watering,
+        name="delete_watering",
+    ),
+    path(
         "plants/<int:plant_id>/assoc_vessel/<int:vessel_id>/",
         views.assoc_vessel,
         name="assoc_vessel",

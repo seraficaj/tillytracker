@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Plant, Vessel
+from .models import Plant, Vessel, Watering
 from .forms import WateringForm
 
 # Create your views here.
@@ -88,6 +88,15 @@ def add_watering(request, plant_id):
         new_watering.plant_id = plant_id
         new_watering.save()
     return redirect("detail", plant_id=plant_id)
+
+
+@login_required
+def delete_watering(request, plant_id, w_id):
+    plant = Plant.objects.get(id=plant_id)
+    watering = Watering.objects.get(plant_id=plant_id, id=w_id)
+    plant.watering_set.remove(watering)
+    return redirect("detail", plant_id=plant_id)
+
 
 @login_required
 def reset_watering(request, plant_id):
