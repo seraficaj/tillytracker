@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>My Plants List</h1>
+<hr>
+<div class="container">
+   <div class="row">
+      {% for plant in plants %}
+      <div class="card col-md-4 m-1">
+         <div class="card-body">
+            <a href="{%url 'detail' plant.id%}" />
+            <h4 class="card-title">{{plant.name}}</h4>
+            </a>
+            <p>Species: T. {{ plant.species }}</p>
+            <p>Description: {{ plant.description }}</p>
+            {% if plant.age > 1 %}
+            <p>Age: {{ plant.age }}</p>
+            {% else %}
+            <p>Age: Seedling</p>
+            {% endif %}
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}
