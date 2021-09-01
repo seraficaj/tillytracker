@@ -9,7 +9,7 @@
 ## Getting Started
 - Sign up as a user
 - Use these credentials if you want to try out the app's functionality:
-    - username:
-    - password:
+    - username: guest_mode
+    - password: plantparents
 
 ## Next Steps
