@@ -29,7 +29,7 @@ class Plant(models.Model):
    species = models.CharField(max_length=100)
    description = models.TextField(max_length=250)
    age = models.IntegerField()
-   vessels = models.ManyToManyField(Vessel)
+   vessels = models.ManyToManyField(Vessel, blank=True)
    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
    def __str__(self):
@@ -53,7 +53,7 @@ class Watering(models.Model):
       default=TYPES[2][0]
    )
    #Foreign key of Plant
-   plant = models.ForeignKey(Plant, on_delete=models.CASCADE, null=True)
+   plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
 
    def __str__(self):
       return f"{self.get_type_display()} on {self.date}"

@@ -13,10 +13,10 @@ from .forms import WateringForm
 # Class-Based-Views
 class PlantCreate(LoginRequiredMixin, CreateView):
     model = Plant
-    fields = "__all__"
+    fields = ["name", "species", "description", "age", "vessels"]
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.owner = self.request.user
         return super().form_valid(form)
 
 
